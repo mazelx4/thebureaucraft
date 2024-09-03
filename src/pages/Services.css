@@ -1,0 +1,32 @@
+/* Services Page Styles */
+.services-container {
+  padding: 20px;
+  text-align: center;
+  animation: bounceIn 1s ease;
+  flex: 1; /* Ensure it takes full height of its container */
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.services-container ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.services-container li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  color: #666;
+}

@@ -1,0 +1,268 @@
+/* src/App.css */
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure main container uses full height and handles overflow */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Home container */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100vh; /* Ensures it takes full viewport height */
+  padding-top: 70px; /* Adjust this value if needed */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, rgb(22, 223, 250), rgb(83, 86, 245));
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(19, 0, 187, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Ensures navbar stays on top of the hero section */
+  animation: fadeInDown 1s ease-in-out;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar-logo:hover {
+  color: #ff6b6b;
+  animation: pulse 1s infinite;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.navbar-links li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ff6b6b;
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+}
+
+.navbar-links li a:hover {
+  color: #ff6b6b;
+}
+
+.navbar-links li a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 20px; /* Increased padding for better visual balance */
+  text-align: center;
+  animation: fadeIn 1.5s ease;
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-start),
+    var(--hero-bg-end)
+  ); /* Gradient background */
+}
+
+.hero h1 {
+  font-size: 3rem; /* Larger font size */
+  font-weight: 700; /* Bold font weight */
+  color: var(--hero-title-color); /* Dynamic color based on theme */
+  margin-bottom: 20px; /* Spacing below the title */
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  animation: titleGlow 3s infinite alternate; /* Glowing effect */
+}
+
+.hero p {
+  font-size: 1.25rem; /* Slightly larger font size for readability */
+  line-height: 1.6; /* Better line spacing */
+  color: var(--hero-text-color); /* Dynamic color based on theme */
+  max-width: 800px; /* Limiting width for better readability */
+  margin: 0 auto; /* Centering text */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for text */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 10px var(--hero-title-glow),
+      0 0 20px var(--hero-title-glow), 0 0 30px var(--hero-title-glow);
+  }
+  to {
+    text-shadow: 0 0 20px var(--hero-title-glow),
+      0 0 30px var(--hero-title-glow), 0 0 40px var(--hero-title-glow);
+  }
+}
+
+/* Theme variables */
+:root {
+  --hero-bg-start: #ffefba;
+  --hero-bg-end: #ffffff;
+  --hero-title-color: #333;
+  --hero-text-color: #666;
+  --hero-title-glow: #f0a500; /* Glowing effect color */
+}
+
+.dark-theme {
+  --hero-bg-start: #1a1a1a;
+  --hero-bg-end: #333;
+  --hero-title-color: #f0f0f0;
+  --hero-text-color: #dcdcdc;
+  --hero-title-glow: #f0a500; /* Glowing effect color */
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme Switcher Button */
+.theme-switcher {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 1000;
+}
+
+/* Light Theme */
+body.light-theme {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+body.light-theme .app,
+body.light-theme .home-container,
+body.light-theme .hero,
+body.light-theme .carousel-container,
+body.light-theme .footer {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+body.dark-theme .app,
+body.dark-theme .home-container,
+body.dark-theme .hero,
+body.dark-theme .carousel-container,
+body.dark-theme .footer {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes textPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

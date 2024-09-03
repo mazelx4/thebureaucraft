@@ -1,0 +1,161 @@
+/* Carousel container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
+}
+
+/* Carousel slides */
+.carousel-slides {
+  display: flex;
+  transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Slide container with Ken Burns effect */
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.75s ease-in-out;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation: kenburns 20s infinite; /* Apply Ken Burns animation */
+  object-fit: cover; /* Ensures image covers the slide without overflow */
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1.1) translateX(0);
+  }
+  50% {
+    transform: scale(1) translateX(-10%);
+  }
+  100% {
+    transform: scale(1.1) translateX(0);
+  }
+}
+
+/* Navigation buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  transition: background-color 0.3s, transform 0.3s;
+  z-index: 2; /* Ensure buttons are above the slides */
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1); /* Slight enlarge on hover */
+}
+
+.carousel-button.prev {
+  left: 20px; /* Adjusted position */
+}
+
+.carousel-button.next {
+  right: 20px; /* Adjusted position */
+}
+
+/* Dots navigation */
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.carousel-dot.active {
+  background-color: white;
+  transform: scale(1.3); /* Larger active dot */
+}
+
+.carousel-dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.carousel-button:focus {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+/* Text overlay with fade-in effect */
+.carousel-slide-text {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadein 2s forwards;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-button {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+}

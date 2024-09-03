@@ -1,0 +1,70 @@
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icons a {
+  display: inline-block;
+  position: relative;
+  width: 55px;
+  height: 55px;
+  perspective: 1000px; /* Add perspective to create a 3D effect */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.icons a .layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; /* Enable 3D transformations for child elements */
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.icons a:hover .layer {
+  transform: rotateY(15deg) rotateX(15deg) scale(1.1); /* Rotate and scale for 3D effect */
+  background-color: rgba(255, 255, 255, 0.2); /* Slight white overlay */
+}
+
+.icons a .layer span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden; /* Hide the backface of the element */
+}
+
+.icons a .layer span.fa {
+  font-size: 30px;
+  color: #fff; /* Icon color */
+  transition: color 0.3s;
+}
+
+.icons a:hover .layer span.fa {
+  color: #ff4081; /* Icon color change on hover */
+}
+
+/* Optional: Adjust these if you want multiple layers with different effects */
+.icons a .layer span:nth-child(1) {
+  opacity: 0.2;
+  transform: translateZ(-10px); /* Move layer backward */
+}
+
+.icons a .layer span:nth-child(2) {
+  opacity: 0.4;
+  transform: translateZ(-5px); /* Move layer backward */
+}
+
+.icons a .layer span:nth-child(3) {
+  opacity: 0.6;
+}
+
+.icons a .layer span:nth-child(4) {
+  opacity: 0.8;
+}

@@ -1,0 +1,113 @@
+/* General styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: var(--navbar-bg-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  animation: logoPulse 5s infinite;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Add glowing effect */
+  box-shadow: 0 0 15px var(--navbar-link-hover-color);
+}
+
+.navbar-logo:hover .logo {
+  transform: rotate(360deg);
+  /* Enhance the glowing effect on hover */
+  box-shadow: 0 0 25px var(--navbar-link-hover-color);
+}
+
+.navbar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.navbar-title {
+  font-size: 28px;
+  color: var(--navbar-title-color);
+  letter-spacing: 3px;
+  margin: 0;
+  text-transform: uppercase;
+  animation: titleGlow 2s infinite alternate;
+}
+
+.navbar-tagline {
+  font-size: 12px;
+  color: var(--navbar-tagline-color);
+  margin: 0;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Navbar links */
+.navbar-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--navbar-link-color);
+  font-size: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s ease;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--navbar-link-hover-color);
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+.nav-link:hover {
+  color: var(--navbar-link-hover-color);
+  transition: color 0.3s ease;
+}
+
+/* Theme variables */
+:root {
+  --navbar-bg-color: #1a1a1a;
+  --navbar-title-color: #fff;
+  --navbar-tagline-color: #f0a500;
+  --navbar-link-color: white;
+  --navbar-link-hover-color: #f0a500;
+}
+
+.light-theme {
+  --navbar-bg-color: #f9f9f9;
+  --navbar-title-color: #333;
+  --navbar-tagline-color: #555;
+  --navbar-link-color: #333;
+  --navbar-link-hover-color: #1a73e8;
+}
